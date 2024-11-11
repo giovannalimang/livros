@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Lista de Livros</h1>
+        <button onclick="location.href='/login'" class="login-button">Login</button>
+    </header>
+
+    <main>
+        <section>
+            <h2>Livros</h2>
+            <ul>
+                {% for livro in livros %}
+                    <li>{{ livro.nome }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Adicionar Livro</h2>
+            <form method="POST" action="/add">
+                <input type="text" name="nome" required placeholder="Nome do Livro">
+                <input type="text" name="descricao" required placeholder="Descrição do Livro">
+                <button type="submit">Adicionar</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
